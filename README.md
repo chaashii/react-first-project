@@ -1,49 +1,35 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. bun install
+<!-- 2. bun playwright install -->
+2. npx playwright install
+--------
+3. cd buntests
+4. bun --bun playwright test // --workers=5
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+--------------------------------------------------------
+Inside that directory, you can run several commands:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  bun playwright test
+    Runs the end-to-end tests.
 
-- Configure the top-level `parserOptions` property like this:
+  bun playwright test --ui
+    Starts the interactive UI mode.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+  bun playwright test --project=chromium
+    Runs the tests only on Desktop Chrome.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+  bun playwright test example
+    Runs the tests in a specific file.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+  bun playwright test --debug
+    Runs the tests in debug mode.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+  bun playwright codegen
+    Auto generate tests with Codegen.
+
+We suggest that you begin by typing:
+  cd buntest
+  bun playwright test
